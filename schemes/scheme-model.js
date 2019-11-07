@@ -2,7 +2,10 @@ const db = require('../data/db-config.js')
 
 module.exports = {
     find,
-    findById
+    findById,
+    add,
+    update,
+    remove
 }
 
 // find
@@ -16,6 +19,23 @@ function findById(id) {
     .first();
 }
 // findSteps
+
 // add
+function add(scheme) {
+    return db('schemes')
+    .insert(scheme)
+    
+
+}
 // update
+function update(changes, id) {
+    return db('schemes')
+    .where({ id })
+    .update(changes)
+}
 // remove
+function remove(id) {
+    return db('schemes')
+    .where('id', id)
+    .del()
+}
